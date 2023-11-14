@@ -24,6 +24,10 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         'name',
         'email',
         'password',
+        'avartar',
+        'phone_number',
+        'aboutMe',
+        'title'
     ];
 
     /**
@@ -45,7 +49,11 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
+    protected $phone_number;
+    protected $avartar;
+    protected $title;
+    protected $aboutMe;
+    protected $cover;
     /**
      * Get the JWT identifier.
      */

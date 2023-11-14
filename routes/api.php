@@ -20,7 +20,10 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/user', [UserController::class, 'show'])
         ->name('user.show');
 });
-
+Route::middleware('auth:api')->group(function () {
+    Route::post('/upload-image', [UserController::class, 'uploadimage'])
+        ->name('user.uploadimage');
+});
 Route::middleware(['auth:api', 'verified'])->group(function () {
     Route::patch('/user', [UserController::class, 'update'])
         ->name('user.update');

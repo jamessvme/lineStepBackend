@@ -37,6 +37,21 @@ class UserController extends Controller
         return new UserResource(Auth::user()->fresh());
     }
 
+    public function uploadimage(Request $request) {
+        // $request->validate([
+        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        // ]);
+
+        // Store the uploaded image in the public storage folder
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('images/user'), $imageName);
+
+        // You may save the image information to the database if needed
+        // ...
+
+        return response()->json(['message' => 'Image uploaded successfully']);
+    }
+
     /**
      * Update the password of the currently authenticated user.
      */
